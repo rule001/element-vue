@@ -1,7 +1,9 @@
+//引入vue
 import Vue from 'vue';
+// 引入vue-router
 import Router from 'vue-router';
+// 第三方的库需要use一下才可以使用
 Vue.use(Router)
- 
 /**
  * 路由相关属性说明
  * hidden: 当设置hidden为true时，意思不在sideBars侧边栏中显示
@@ -20,7 +22,19 @@ export default new Router({
         name:'login',
         component:()=>import('../views/login'),
         meta:{title:'登录页'}
-      }
+      },
+      {
+        path:'/page1',
+        name:'page1',
+        component:()=>import('@/views/page/page1.vue'),
+        meta:{title:'页面1'}
+      },
+      {
+        path:'/page2',
+        name:'page2',
+        component:()=>import('@/views/page/page2.vue'),
+        meta:{title:'页面2'}
+      },
     ]
   })
   

@@ -61,7 +61,7 @@ export default {
                     // this.refresh()
                 }else{
                     console.log(this.$router)
-                    // this.$router.push(this.$router.query.redirect)
+                    this.$router.push('/page1')
                 }
             })
             console.log(this.form);
