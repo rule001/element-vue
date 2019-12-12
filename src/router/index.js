@@ -2,6 +2,7 @@
 import Vue from 'vue';
 // 引入vue-router
 import Router from 'vue-router';
+import Layout from '@/layout'
 // 第三方的库需要use一下才可以使用
 Vue.use(Router)
 /**
@@ -15,13 +16,26 @@ Vue.use(Router)
  */
 
 /*通用routers*/
-export default new Router({
-    routes: [
+export const currencyRoutes=[
       {
         path:'/login',
         name:'login',
         component:()=>import('../views/login'),
         meta:{title:'登录页'}
+      },
+      {
+        path:'/',
+        name:'Home',
+        component:Layout,
+        redirect:'/index',
+        children:[
+          {
+            path:'index',
+            name:'index',
+            component:()=>import('@/views/index'),
+            meta:{title:'指南',icon:'el-icon-s-data'}
+          }
+        ]
       },
       {
         path:'/page1',
@@ -35,6 +49,29 @@ export default new Router({
         component:()=>import('@/views/page/page2.vue'),
         meta:{title:'页面2'}
       },
-    ]
+      {
+        path: '/page3',
+        name: 'page3',
+        component: Layout,
+        // redirect: '/driver/index',
+        children: [
+          {
+            path: 'index',
+            name: 'Driver-index',
+            component: () => import('@/views/page/page3'),
+            meta: { title: '问问', icon: 'el-icon-s-flag' }
+          }
+        ]
+      }
+];
+const creatRouter = () => {
+  return new Router({
+    routes: currencyRoutes,
+    scrollBehavior() {
+      return { x: 0, y: 0 }
+    }
   })
-  
+}
+
+const router = creatRouter()
+export default router
