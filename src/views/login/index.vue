@@ -55,13 +55,13 @@ export default {
     methods:{
         onSubmit(){
             this.$store
-            .dispatch('_login',this.form)
+            .dispatch('user/_login',this.form)
             .then(res=>{
                 if(!res.data.success){
                     // this.refresh()
                 }else{
                     console.log(this.$router)
-                    this.$router.push('/page1')
+                    this.$router.push('/index')
                 }
             })
             // console.log(this.form);

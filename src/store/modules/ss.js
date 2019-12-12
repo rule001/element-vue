@@ -25,7 +25,6 @@ function forSearchArr(route, roles) {
   }
 const action={
     getAsyncRoutes({commit,rootGetters},roles){
-        console.log(0)
         return new Promise(resolve=>{
             let routes=[]
             if(rootGetters.userName === 'admin'){
@@ -38,13 +37,9 @@ const action={
         })
     }
 }
-const getters={
-    routes: state => state.routes,
-}
 export default {
     namespaced: true,
     state,
     mutations,
     action,
-    getters
   }
