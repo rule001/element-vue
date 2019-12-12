@@ -1,38 +1,100 @@
-import { Message } from "element-ui"
-import {login} from '@/api/login'
-const state={
-    token:'',
-    userName:'',
-    roles:[],
-    introduce:''
+import { login, getInfo } from '@/api/login'
+import { Message } from 'element-ui'
+import router, { resetRouter } from '@/router'
+
+const state = {
+  token: localStorage.getItem('token') ? localStorage.getItem('token') : '', // 认证凭证'
+  userName: '',
+  roles: [],
+  introduce: ''
 }
-const mutations={
-    SET_TOKEN(state,val){
-        state.token=val
-        localStorage.setItem('token',val)
-    }
+const mutations = {
+  SET_TOKEN(state, val) {
+    console.log(val)
+    state.token = val
+    localStorage.setItem('token', val)
+  },
+  DEL_TOKEN(state) {
+    state.token = ''
+    state.userName = ''
+    state.roles = ''
+    state.introduce = ''
+    localStorage.removeItem('token')
+  },
+  SET_ROLES(state, payload) {
+    console.log(payload)
+    state.roles = payload
+  },
+  SET_NAME(state, payload) {
+    state.userName = payload
+  },
+  SET_INTRODUCE(state, payload) {
+    state.introduce = payload
+  }
 }
-const actions={
-    _login({commit},formData){
-        console.log('000')
-        return new Promise((resolve,reject)=>{
-            login(formData)
-            .then(res=>{
-                if(res.state==1){
-                    commit('SET_TOKEN',res.data.token)
-                }else{
-                    Message.error(res.data.msg);
-                }
-                resolve(res)
-            })
-            .catch(error=>{
-                reject(error)
-            })
+const actions = {
+  // user login
+  _login({ commit }, formdatas) {
+    return new Promise((resolve, reject) => {
+      login(formdatas)
+        .then(res => {
+          if (res.code === 0) {
+              console.log(res)
+            if (res.data.success) {
+              Message.success(res.data.msg)
+              commit('SET_TOKEN', res.data.token)
+              console.log()
+            } else {
+              Message.error(res.data.msg)
+            }
+            resolve(res)
+          }
         })
-    }
+        .catch(error => {
+          reject(error)
+        })
+    })
+  },
+  loginOut({ commit }) {
+    commit('DEL_TOKEN')
+    resetRouter()
+    router.push({
+      path: '/login',
+      query: {
+        redirect: '/'
+      }
+    })
+  },
+  _getInfo({ commit }) {
+    return new Promise((resolve, reject) => {
+      getInfo()
+        .then(res => {
+          console.log(res.data)
+          if (res.code === 0) {
+            const { name, roles, introduce } = res.data;
+            console.log(roles)
+            commit('SET_ROLES', roles)
+            commit('SET_NAME', name)
+            commit('SET_INTRODUCE', introduce)
+          } else {
+            Message.error(res.msg)
+          }
+          resolve(res.data)
+        })
+        .catch(error => {
+          reject(error)
+        })
+    })
+  }
 }
-export default{
-    state,
-    mutations,
-    actions
+const getters={
+    token: state => state.token,
+    roles: state => state.roles,
+}
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions,
+  getters
 }

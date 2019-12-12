@@ -2,8 +2,8 @@
   <div class="header">
     <div class="header_l">
         <a href="javascript:;" class="logoLink">
-           <img src="./logo.png" alt="logo" />
-           智慧学校
+           <!-- <img src="./logo.png" alt="logo" /> -->
+           自建项目
         </a>
     </div>
     <div class="header_r">

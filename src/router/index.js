@@ -3,6 +3,8 @@ import Vue from 'vue';
 // 引入vue-router
 import Router from 'vue-router';
 import Layout from '@/layout'
+import store from '@/store'
+import { Message } from 'element-ui'
 // 第三方的库需要use一下才可以使用
 Vue.use(Router)
 /**
@@ -74,4 +76,49 @@ const creatRouter = () => {
 }
 
 const router = creatRouter()
+// 解决addRoute不能删除动态路由问题
+export function resetRouter() {
+  const reset = creatRouter()
+  router.matcher = reset.matcher
+}
+
+// 导航守卫
+router.beforeEach(async (to, from, next) => {
+  if (to.path === '/login') {
+    next()
+  } else {
+    console.log('888')
+    console.log(store.getters)
+    if (store.getters.token) {
+      console.log(store.getters.roles)
+      const hasRoles = store.getters.roles.length > 0
+      console.log(store.getters.roles.length)
+      if (hasRoles) {
+        next()
+      } else {
+        try {
+          const { roles } = await store.dispatch('_getInfo')
+          const addRoutes = await store.dispatch(
+            'getAsyncRoutes',
+            roles
+          )
+          router.addRoutes(addRoutes)
+
+          // hack method to ensure that addRoutes is complete
+          // set the replace: true, so the navigation will not leave a history record
+          next({ ...to, replace: true })
+        } catch (error) {
+          Message.error(error)
+        }
+      }
+    } else {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    }
+  }
+})
 export default router

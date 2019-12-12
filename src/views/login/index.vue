@@ -64,7 +64,7 @@ export default {
                     this.$router.push('/page1')
                 }
             })
-            console.log(this.form);
+            // console.log(this.form);
         }
     }
 }
