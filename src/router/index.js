@@ -46,43 +46,48 @@ export const currencyRoutes = [
 /*动态添加routers*/
 export const asyncRoutes = [
   {
-    path: '/page',
-    name: 'page',
+    path: '/index',
+    name: 'Index',
     component: Layout,
-    meta: {
-      title: '权限许可',
-      icon: 'el-icon-lock'
-    },
+    redirect: '/index/index',
     children: [
       {
-        path: 'page-user',
-        name: 'PageUser',
-        component: () => import('@/views/page/page1'),
-        meta: { title: '用户页面', icon: 'el-icon-user' }
-      },
-      {
-        path: 'page-admin',
-        name: 'PageAdmin',
-        component: () => import('@/views/page/page2'),
-        meta: {
-          title: '管理员页面',
-          icon: 'el-icon-user-solid'
-        }
-      },
-      {
-        path: 'roles',
-        name: 'Roles',
-        component: () => import('@/views/page/page2'),
-        meta: { title: '权限设置', icon: 'el-icon-s-tools' }
+        path: 'index',
+        name: 'index',
+        component: () => import('@/views/index/index.vue'),
+        meta: { title: '首页', icon: 'el-icon-s-flag' }
       }
     ]
   },
   {
-    path: '/index',
-    name: 'index',
-    component: () => import('@/views/index/index.vue'),
-    hidden: true
-  },
+    path: '/page',
+    name: 'page',
+    component: Layout,
+    meta: {
+      title: '页面',
+      icon: 'el-icon-lock'
+    },
+    children: [
+      {
+        path: 'page-page1',
+        name: 'Page1',
+        component: () => import('@/views/page/page1'),
+        meta: { 
+          title: '页面1', 
+          icon: 'el-icon-user' 
+        }
+      },
+      {
+        path: 'page-page2',
+        name: 'Page2',
+        component: () => import('@/views/page/page2'),
+        meta: {
+          title: '页面2',
+          icon: 'el-icon-user-solid'
+        }
+      },
+    ]
+  }
 ]
 const creatRouter = () => {
   return new Router({
