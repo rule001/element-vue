@@ -182,11 +182,7 @@
       .sideBar {
         width: 64px !important;
         .el-menu--collapse > .sideItem .el-menu-item [class^='el-icon-'],
-        .el-menu--collapse
-          > .sideItem
-          .el-submenu
-          > .el-submenu__title
-          [class^='el-icon-'] {
+        .el-menu--collapse> .sideItem .el-submenu > .el-submenu__title [class^='el-icon-'] {
           margin: 0;
           vertical-align: middle;
           width: 24px;
@@ -207,6 +203,10 @@
           > .el-submenu__title
           .el-submenu__icon-arrow {
           display: none;
+        }
+        .el-menu--collapse> .sideItem p{
+            color: #fff;
+            font-weight: bold;
         }
       }
       .header_l {

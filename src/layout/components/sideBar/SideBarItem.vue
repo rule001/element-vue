@@ -13,6 +13,7 @@
         </el-menu-item>
       </page-link>
     </template>
+    
     <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
         <i :class="item.meta.icon ? item.meta.icon : ''"></i>
@@ -49,10 +50,11 @@ export default {
       childItem: null
     }
   },
+  // created(){
+  //   console.log(this.item)
+  // },
   methods: {
     hasOnlyChild(children = [], item) {
-      console.log('999999')
-      console.log(children)
       // debugger
       let newChildren = children.filter(obj => {
         if (obj.hidden) {

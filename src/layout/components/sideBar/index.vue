@@ -9,7 +9,6 @@
         active-text-color="rgb(79, 148, 212)"
         mode="vertical"
         :collapse-transition="false"
-        :collapse="opened"
       >
         <sidebar-item
           v-for="item in routes"
@@ -27,8 +26,11 @@ import SidebarItem from './SideBarItem'
 import { mapGetters } from 'vuex'
 export default {
   components: { SidebarItem },
+  created(){
+    console.log(this.routes)
+  },
   computed: {
-    ...mapGetters(['routes', 'opened']),
+    ...mapGetters(['routes']),
     // booleanOpen() {
     //   return this.opened === 'true' ? true : false
     // },

@@ -1,22 +1,14 @@
 <template>
     <div class="sideCollapse" id="domColapse">
-        <i 
+        <!-- <i 
             :class="{'el-icon-s-unfold':opend,'el-icon-s-fold':!opened}"
             @click="toggleOpen()"
-        ></i>
+        ></i> -->
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex' //vuex的计算属性
 export default {
-    computed:{
-        ...mapGetters(['opened'])
-    },
-    methods: {
-        toggleOpen() {
-            this.$store.commit('app/SET_OPENED', !this.opened)
-        }
-    }
+   
 }
 </script>
 <style lang="scss" scoped>

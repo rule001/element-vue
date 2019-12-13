@@ -1,12 +1,14 @@
-//引入vue
-import Vue from 'vue';
-// 引入vue-router
-import Router from 'vue-router';
-import Layout from '@/layout'
+import Vue from 'vue'
+import Router from 'vue-router'
 import store from '@/store'
-import { Message } from 'element-ui'
-// 第三方的库需要use一下才可以使用
+
 Vue.use(Router)
+
+import Layout from '@/layout'
+// import NavTest from './modules/nav-test'
+import { Message } from 'element-ui'
+import getTitle from '@/utils/getTitle'
+
 /**
  * 路由相关属性说明
  * hidden: 当设置hidden为true时，意思不在sideBars侧边栏中显示
@@ -18,105 +20,69 @@ Vue.use(Router)
  */
 
 /*通用routers*/
-export const currencyRoutes=[
-      {
-        path:'/login',
-        name:'login',
-        component:()=>import('../views/login'),
-        meta:{title:'登录页'}
-      },
-      {
-        path:'/404',
-        component:()=>import('../views/login'),
-      },
-      {
-        path:'/',
-        name:'Home',
-        component:Layout,
-        redirect:'/index',
-        children:[
-          {
-            path:'index',
-            name:'index',
-            component:()=>import('@/views/index'),
-            meta:{title:'指南',icon:'el-icon-s-data'}
-          }
-        ]
-      },
-      {
-        path:'/page1',
-        name:'page1',
-        component:()=>import('@/views/page/page1.vue'),
-        meta:{title:'页面1'}
-      },
-      {
-        path:'/page2',
-        name:'page2',
-        component:()=>import('@/views/page/page2.vue'),
-        meta:{title:'页面2'}
-      },
-      {
-        path: '/page3',
-        name: 'page3',
-        component: Layout,
-        // redirect: '/driver/index',
-        children: [
-          {
-            path: 'index',
-            name: 'Driver-index',
-            component: () => import('@/views/page/page3'),
-            meta: { title: '问问', icon: 'el-icon-s-flag' }
-          }
-        ]
-      }
-];
-export const asyncRoutes = [
+export const currencyRoutes = [
   {
-    path:'/login',
-    name:'login',
-    component:()=>import('../views/login'),
-    meta:{title:'登录页'}
-  },
-  {
-    path:'/',
-    name:'Home',
-    component:Layout,
-    redirect:'/index',
-    children:[
-      {
-        path:'index',
-        name:'index',
-        component:()=>import('@/views/index'),
-        meta:{title:'指南',icon:'el-icon-s-data'}
-      }
-    ]
-  },
-  {
-    path:'/page1',
-    name:'page1',
-    component:()=>import('@/views/page/page1.vue'),
-    meta:{title:'页面1'}
-  },
-  {
-    path:'/page2',
-    name:'page2',
-    component:()=>import('@/views/page/page2.vue'),
-    meta:{title:'页面2'}
-  },
-  {
-    path: '/page3',
-    name: 'page3',
-    component: Layout,
-    // redirect: '/driver/index',
+    path: '/',
+    name: 'Login',
+    redirect: '/login',
+    component: () => import('@/views/login/index.vue'),
+    meta: { title: '登录页' },
+    hidden: true,
     children: [
       {
-        path: 'index',
-        name: 'Driver-index',
-        component: () => import('@/views/page/page3'),
-        meta: { title: '问问', icon: 'el-icon-s-flag' }
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/login/index.vue'),
       }
     ]
-  }
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/error-page/404.vue'),
+    hidden: true
+  },
+]
+/*动态添加routers*/
+export const asyncRoutes = [
+  {
+    path: '/page',
+    name: 'page',
+    component: Layout,
+    meta: {
+      title: '权限许可',
+      icon: 'el-icon-lock'
+    },
+    children: [
+      {
+        path: 'page-user',
+        name: 'PageUser',
+        component: () => import('@/views/page/page1'),
+        meta: { title: '用户页面', icon: 'el-icon-user' }
+      },
+      {
+        path: 'page-admin',
+        name: 'PageAdmin',
+        component: () => import('@/views/page/page2'),
+        meta: {
+          title: '管理员页面',
+          icon: 'el-icon-user-solid'
+        }
+      },
+      {
+        path: 'roles',
+        name: 'Roles',
+        component: () => import('@/views/page/page2'),
+        meta: { title: '权限设置', icon: 'el-icon-s-tools' }
+      }
+    ]
+  },
+  {
+    path: '/index',
+    name: 'index',
+    component: () => import('@/views/index/index.vue'),
+    hidden: true
+  },
 ]
 const creatRouter = () => {
   return new Router({
@@ -128,6 +94,7 @@ const creatRouter = () => {
 }
 
 const router = creatRouter()
+
 // 解决addRoute不能删除动态路由问题
 export function resetRouter() {
   const reset = creatRouter()
@@ -136,6 +103,7 @@ export function resetRouter() {
 
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
+  document.title = getTitle(to.meta.title)
   if (to.path === '/login') {
     next()
   } else {
@@ -146,7 +114,11 @@ router.beforeEach(async (to, from, next) => {
       } else {
         try {
           const { roles } = await store.dispatch('user/_getInfo')
-          const addRoutes = await store.dispatch('user/getAsyncRoutes',roles)
+          const addRoutes = await store.dispatch(
+            'permission/getAsyncRoutes',
+            roles
+          )
+          console.log(store.getters.addRoutes)
           router.addRoutes(addRoutes)
 
           // hack method to ensure that addRoutes is complete
