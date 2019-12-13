@@ -51,6 +51,8 @@ export default {
   },
   methods: {
     hasOnlyChild(children = [], item) {
+      console.log('999999')
+      console.log(children)
       // debugger
       let newChildren = children.filter(obj => {
         if (obj.hidden) {

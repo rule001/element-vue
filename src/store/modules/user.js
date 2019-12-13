@@ -12,7 +12,6 @@ const state = {
 }
 const mutations = {
   SET_TOKEN(state, val) {
-    console.log(val)
     state.token = val
     localStorage.setItem('token', val)
   },
@@ -24,11 +23,9 @@ const mutations = {
     localStorage.removeItem('token')
   },
   SET_ROLES(state, payload) {
-    console.log(payload)
     state.roles = payload
   },
   SET_NAME(state, payload) {
-    console.log(payload)
     state.userName = payload
   },
   SET_INTRODUCE(state, payload) {
@@ -36,7 +33,6 @@ const mutations = {
   },
   SET_ROUTES(state,payload){
     state.routes=[...currencyRoutes,...payload]
-    console.log(payload)
     state.addRoutes=payload
   }
 }
@@ -60,7 +56,6 @@ const actions = {
       login(formdatas)
         .then(res => {
           if (res.code === 0) {
-              console.log(res)
             if (res.data.success) {
               Message.success(res.data.msg)
               commit('SET_TOKEN', res.data.token)
@@ -87,13 +82,10 @@ const actions = {
   },
   _getInfo({ commit }) {
     return new Promise((resolve, reject) => {
-      console.log('get')
       getInfo()
         .then(res => {
-          console.log(res.data)
           if (res.code === 0) {
             const { name, roles, introduce } = res.data;
-            console.log(roles)
             commit('SET_ROLES', roles)
             commit('SET_NAME', name)
             commit('SET_INTRODUCE', introduce)
@@ -108,21 +100,13 @@ const actions = {
     })
   },
   getAsyncRoutes({commit,rootGetters},roles){
-    console.log('33333333333333333333333333')
     return new Promise(resolve=>{
         let routes=[]
-        console.log('11111')
-        console.log(rootGetters.userName)
-        console.log('11111')
         if(rootGetters.userName === 'admin'){
-            console.log('555555')
             routes =asyncRoutes || ''
-            console.log(asyncRoutes)
-            console.log(routes)
         }else{
             routes = forSearchArr(asyncRoutes,roles)
         }
-        console.log(routes)
         commit('SET_ROUTES',routes)
         resolve(routes)
     })
