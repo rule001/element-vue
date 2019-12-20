@@ -1,157 +1,151 @@
 <template>
   <div class="index-box">
-    <el-card class="card-box">
-        <!-- cardList -->
-        <el-row class="infoCrads">
-            <el-col :span="6">
-                <div class="cardItem">
-                  <div class="cardItem_txt">
-                      <count-to
-                        class="cardItem_p0 color-green2"
-                        :startVal="startVal"
-                        :endVal="profit"
-                        :duration="2000"
-                      ></count-to>
-                      <p class="cardItem_p1">total</p>
-                  </div>
-                  <div class="cardItem_icon">
-                      <i class="el-icon-user color-green1"></i>
-                  </div>
-                </div>
-            </el-col>
-            <el-col :span="6">
-                <div class="cardItem">
-                  <div class="cardItem_txt">
-                       <count-to
-                        class="cardItem_p0 color-green2"
-                        :startVal="startVal"
-                        :endVal="profit"
-                        :duration="2000"
-                      ></count-to>
-                      <p class="cardItem_p1">total</p>
-                  </div>
-                  <div class="cardItem_icon">
-                      <i class="el-icon-s-comment color-blue"></i>
-                  </div>
-                </div>
-            </el-col>
-            <el-col :span="6">
-                <div class="cardItem">
-                  <div class="cardItem_txt">
-                      <count-to
-                        class="cardItem_p0 color-green2"
-                        :startVal="startVal"
-                        :endVal="profit"
-                        :duration="2000"
-                      ></count-to>
-                      <p class="cardItem_p1">total</p>
-                  </div>
-                  <div class="cardItem_icon">
-                     <i class="el-icon-shopping-cart-2 color-red"></i>
-                  </div>
-                </div>
-            </el-col>
-            <el-col :span="6">
-                <div class="cardItem">
-                  <div class="cardItem_txt">
-                       <count-to
-                        class="cardItem_p0 color-green2"
-                        :startVal="startVal"
-                        :endVal="profit"
-                        :duration="2000"
-                      ></count-to>
-                      <p class="cardItem_p1">total</p>
-                  </div>
-                  <div class="cardItem_icon">
-                      <i class="el-icon-wallet color-green2"></i>
-                  </div>
-                </div>
-            </el-col>
-        </el-row>
-    </el-card>
+      <el-row>
+          <el-col :span="12">
+            <el-card class="cardItem img1">
+            </el-card>
+          </el-col>
+          <el-col :span="12">
+              <el-card class="cardItem">
+                  <el-row>
+                    <el-col :span="12">
+                      <div class="rili-box">
+                          <div class="rili-top">
+                              <img src="../../assets/rili.png" alt="">
+                              <div class="text-box">
+                                <h4>2019年12月26日</h4>
+                                <p>农历腊月 初一</p>
+                                <a href="javascript:;">第十六教学周</a>
+                              </div>
+                          </div>
+                          <div class="rili-bottom">
+                              <div class="title-box">
+                                <h5>12月份 日程事件</h5>
+                                <p><i class="el-icon-circle-plus-outline"></i>添加日程</p>
+                              </div>
+                              <div class="news-list">
+                                  <ul>
+                                    <li>
+                                      <span></span>
+                                      <p>【毕业季】我学与大连市，中科院微电子所三方共建电子系统</p>
+                                    </li>
+                                    <li>
+                                      <span></span>
+                                      <p>【毕业季】我学与大连市，中科院微电子所三方共建电子系统</p>
+                                    </li>
+                                    <li>
+                                      <span></span>
+                                      <p>【毕业季】我学与大连市，中科院微电子所三方共建电子系统</p>
+                                    </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                    </el-col>
+                    <el-col :span="12">
+                      我是日历
+                    </el-col>
+                  </el-row>
+              </el-card>
+          </el-col>
+      </el-row>
   </div>
 </template>
 <script>
-import CountTo from 'vue-count-to'
+// import CountTo from 'vue-count-to'
   export default {
       data(){
+          return{
 
+          }
       },
-      components: {
-         CountTo,
-      },
+      // components: {
+      //    CountTo,
+      // },
   }
 </script>
 <style lang="scss" scoped>
-$mgTop: 30px;
-@mixin shadow {
-  box-shadow: 0 0 10px #e2e2e2;
-}
-.color-green1 {
-  color: #40c9c6 !important;
-}
-.color-blue {
-  color: #36a3f7 !important;
-}
-.color-red {
-  color: #f4516c !important;
-}
-.color-green2 {
-  color: #34bfa3 !important;
-}
-.dashbord {
-  background-color: #f0f3f4;
-}
-.infoCrads {
-  margin: 0 -20px 0 -20px;
-  .el-col {
-    padding: 0 20px;
-    .cardItem {
-      height: 108px;
-      background: #fff;
+  .cardItem{
+    margin: 0 10px;
+    height: 300px;
+  }
+  // 轮播图
+  .img1{
+      background: url(../../assets/img1.png) no-repeat;
+      background-size: 100%;
+  }
+  // 日历样式
+  .rili-box{
+    .rili-top{
+      overflow: hidden;
+      img{
+        width:100px;
+        margin:0 10px 0 0;
+        display:inline-block;
+        float: left;
+      }
+      .text-box{
+          float:left;
+          padding: 10px;
+          text-align: left;
+          h4{
+            font-size:16px;
+            font-weight: bold;
+          }
+          p{
+            margin:8px 0;
+          }
+          a{
+            background: #58A6CD;
+            padding:5px 10px;
+            border-radius: 20px;
+            color: #fff;
+          }
+      }
+    }
+    .rili-bottom{
+      text-align: left;
+      margin: 10px 0 0 0;
+      .title-box{
+        line-height: 25px;
+        overflow: hidden;
+        margin: 0 0 10px 0;
+        h5{
+          font-size: 14px;
+          font-weight: bold;
+          float: left;
+        }
+        p{
+          float:right;
+          color: #999;
+          font-size: 14px;
+          i{
+            margin: 0 5px 0 0;
+          }
+        }
+      }
+      .news-list{
+        ul{
+          list-style: none;
+          margin: 0;
+          li{
+            overflow: hidden;
+            span{
+              background: red;
+              height: 6px;
+              width: 6px;
+              display: inline-block;
+              border-radius:6px;
+              float: left;
+              margin:6px 0 0 0;
+            }
+            p{
+              float: left;
+              line-
+            }
+          }
+        }
+      }
     }
   }
-}
-.cardItem {
-  color: #666;
-  @include shadow();
-  .cardItem_txt {
-    float: left;
-    margin: 26px 0 0 20px;
-    .cardItem_p0 {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .cardItem_p1 {
-      font-size: 16px;
-    }
-  }
-  .cardItem_icon {
-    float: right;
-    margin: 24px 20px 0 0;
-    i {
-      font-size: 55px;
-    }
-  }
-}
-.lCharts {
-  background: #fff;
-  margin-top: $mgTop;
-  padding: 30px 0;
-  @include shadow();
-}
-.barCharts {
-  background: #fff;
-  margin-top: $mgTop;
-  padding: 30px 0;
-  @include shadow();
-}
-.pieCharts {
-  background: #fff;
-  padding: 20px 0;
-  @include shadow();
-}
-.tableChart {
-  margin-top: $mgTop;
-}
 </style>

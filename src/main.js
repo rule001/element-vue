@@ -5,9 +5,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import '@/style/index.scss' // glob scss
+import {installCardDragger} from 'carddragger'
 Vue.config.productionTip=false
 Vue.use(ElementUI);
-
+Vue.use(installCardDragger)
 
 new Vue({
   router,

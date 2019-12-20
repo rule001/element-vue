@@ -60,6 +60,20 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/demo',
+    name: 'Demo',
+    component: Layout,
+    redirect: '/demo',
+    children: [
+      {
+        path: 'demo',
+        name: 'demo',
+        component: () => import('@/views/demo/index.vue'),
+        meta: { title: 'demo', icon: 'el-icon-s-flag' }
+      }
+    ]
+  },
+  {
     path: '/page',
     name: 'page',
     component: Layout,

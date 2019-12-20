@@ -61,7 +61,7 @@ export default {
                     // this.refresh()
                 }else{
                     console.log(this.$router)
-                    this.$router.push('/page')
+                    this.$router.push('/index')
                 }
             })
             // console.log(this.form);
