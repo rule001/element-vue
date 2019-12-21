@@ -15,7 +15,7 @@
       }
     }
     .pageMain {
-      margin-left: 200px;
+      margin-left:$sideBarWidth;
       transition: all 0.3s;
       height: 100%;
       & > div {
@@ -61,7 +61,7 @@
     z-index: 999;
   }
   .header_l {
-    width: 200px;
+    width:$sideBarWidth;
     height: 100%;
     float: left;
     background-color: #3a3f51;
@@ -72,7 +72,7 @@
   }
   .header_r {
     height: 100%;
-    margin-left: 200px;
+    margin-left:$sideBarWidth;
     background-color: $white;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
     transition: all 0.3s;
