@@ -20,18 +20,20 @@
                     </div>
                 </div>
                 <div class="card-item-body">
-                    <div class="card-item">
-                        <div class="img-box">
-                            <img src="../../assets/sy1.png" alt="">
+                    <div class="img-box">
+                        <img src="../../assets/sy1.png" alt="">
+                    </div>
+                    <div class="text-box">
+                        <div class="text-title">
+                            <h5>图书列表</h5>
+                            <span>更多>></span>
                         </div>
-                        <div class="text-box">
-                            <div class="text-title">
-                                <h5>图书列表</h5>
-                                <span>更多>></span>
-                            </div>
-                            <div class="text-content">
-                                <span><i class="el-icon-reading"></i>科学发现纵谈论</span>
-                            </div>
+                        <div class="text-content">
+                            <span><i class="el-icon-reading"></i>科学发现纵谈论</span>
+                            <span><i class="el-icon-reading"></i>科学发现纵谈论</span>
+                            <span><i class="el-icon-reading"></i>科学发现纵谈论</span>
+                            <span><i class="el-icon-reading"></i>科学发现纵谈论</span>
+                            <span><i class="el-icon-reading"></i>科学发现纵谈论</span>
                         </div>
                     </div>
                 </div>
@@ -92,30 +94,71 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.card{
-    background: #fff;
-    border-radius: 10px;
-    .card-header{
+.card-item{
+    .card-item-h{
         display:flex;
         display:-webkit-flex;
-        justify-content:space-between;
-        line-height: 50px;
-        border-bottom: 1px solid #F6F6F6;
-        padding:0 20px;
-        h5{
-            font-size:16px;
+        justify-content: space-between;  
+        .left{
+            span{
+                display: inline-block;
+                margin: 0 20px 15px 0;
+                background: #F6F6F6;
+                padding: 5px 15px;
+                border-radius: 20px;
+                color: #808EA1;
+                font-size: 14px;
+            }
+            span.active{
+                background: #2A79C4;
+                color: #fff;
+            }
         }
-        span{
-            font-weight: bold;
+        .right{
+            span{
+                color: #808EA1;
+                line-height:23px;
+                font-size: 14px;
+            }
         }
     }
-    .card-body{
-        padding: 20px;
-    }
-}
-.card-item{
-    .img-box{
-        
+    .card-item-body{
+        border-top: 1px solid #F6F6F6;
+        // border-bottom: 1px solid #F6F6F6;
+        padding: 20px 0 0;
+        overflow: hidden;
+        .img-box{
+            float: left;
+            margin: 0 20px 0 0;
+            height: 130px;
+            img{
+                height:100%;
+            }
+        }
+        .text-box{
+            float: left;
+            .text-title{
+                line-height: 41px;
+                display:flex;
+                display:-webkit-flex;
+                justify-content: space-between;
+                h5{
+                    font-size: 14px;
+                    color: #333;
+                }
+                span{
+                    color: #999;
+                }
+            }
+            .text-content{
+                text-align:left;
+                span{
+                    width: 50%;
+                    float: left;
+                    line-height:30px;
+                }
+            }
+        }
     }
 }
 </style>

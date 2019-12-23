@@ -82,7 +82,16 @@ export default {
                     source:'校长办公室',
                     time:'2019-12-19'
                 },
-                
+                 {
+                    content:'我校与大连市，中科院微电子所三方共建微电子系统，为广大是十年文革的梵蒂冈地方官',
+                    source:'校长办公室',
+                    time:'2019-12-19'
+                },
+                 {
+                    content:'我校与大连市，中科院微电子所三方共建微电子系统，为广大是十年文革的梵蒂冈地方官',
+                    source:'校长办公室',
+                    time:'2019-12-19'
+                },
             ]
         }
     },
@@ -94,27 +103,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.card{
-    background: #fff;
-    border-radius: 10px;
-    .card-header{
-        display:flex;
-        display:-webkit-flex;
-        justify-content:space-between;
-        line-height: 50px;
-        border-bottom: 1px solid #F6F6F6;
-        padding:0 20px;
-        h5{
-            font-size:16px;
-        }
-        span{
-            font-weight: bold;
-        }
-    }
-    .card-body{
-        padding: 20px;
-    }
-}
 .card-item{
     .card-item-h{
         display:flex;
@@ -164,7 +152,7 @@ export default {
                 }
                 p{
                     font-size: 14px;
-                    line-height:36px;
+                    line-height:35px;
                 }
                 .content{
                     width:65%;
@@ -185,7 +173,7 @@ export default {
     }
     .card-item-footer{
         text-align: right;
-        padding: 10px 0 0 0;
+        padding:10px 0 0 0;
         a{
             text-decoration: none;
             cursor: pointer;

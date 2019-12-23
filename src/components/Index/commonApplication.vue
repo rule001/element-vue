@@ -44,41 +44,18 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.card{
-    background: #fff;
-    border-radius: 10px;
-    .card-header{
-        display:flex;
-        display:-webkit-flex;
-        justify-content:space-between;
-        line-height: 50px;
-        border-bottom: 1px solid #F6F6F6;
-        padding:0 20px;
-        h5{
-            font-size:16px;
-        }
-        span{
-            font-weight: bold;
-        }
-    }
-    .card-body{
-        padding: 20px;
+.card-item{
+    span{
+        line-height:35px;
+        display: inline-block;
+        white-space: nowrap; 
         overflow: hidden;
-        .card-item{
-            span{
-                line-height:35px;
-                display: inline-block;
-                white-space: nowrap; 
-                overflow: hidden;
-                text-overflow:ellipsis;
-                width: 25%;
-                float: left;
-                i{
-                    margin: 0 10px 0 0;
-                }
-            }
+        text-overflow:ellipsis;
+        width: 25%;
+        float: left;
+        i{
+            margin: 0 10px 0 0;
         }
     }
 }
-
 </style>
