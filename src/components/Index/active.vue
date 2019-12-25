@@ -1,14 +1,14 @@
 <template>
-    <div class="card">
+    <div class="card" style="margin:20px 0 0 0">
         <div class="card-header">
-            <h5>资源中心</h5>
+            <h5>活动中心</h5>
             <span>...</span>
         </div>
         <div class="card-body">
             <div class="card-item">
                 <div class="card-item-h">
-                    <span class="active">为您推荐</span>
-                    <span>我收藏的</span>
+                    <span class="active">热门活动</span>
+                    <span>我关注的人的活动</span>
                 </div>
                 <div class="card-item-body">
                     <div class="list-box">
@@ -17,24 +17,12 @@
                                 <img src="../../assets/source.png" alt="">
                             </span>
                             <div class="text-box">
-                                <h5>如何在校园里成为迷人的成为迷人的成为迷人的成为迷人的...</h5>
-                                <p class="t1"><i class="el-icon-user-solid"></i>宣传小组</p>
+                                <h5>投票选出您心目中的...</h5>
+                                <p class="t1"><i class="el-icon-user-solid"></i>校园杂志社</p>
+                                <p class="t1">2019-08-19 12:30</p>
                                 <p class="t2">
-                                    <span><i class="el-icon-video-camera"></i>650</span>
-                                    <span>12分钟前发布</span>
-                                </p>
-                            </div>
-                        </div>
-                         <div class="list-item-box">
-                            <span class="img-box">
-                                <img src="../../assets/source.png" alt="">
-                            </span>
-                            <div class="text-box">
-                                <h5>如何在校园里成为迷人的成为迷人的成为迷人的成为迷人的...</h5>
-                                <p class="t1"><i class="el-icon-user-solid"></i>宣传小组</p>
-                                <p class="t2">
-                                    <span><i class="el-icon-video-camera"></i>650</span>
-                                    <span>12分钟前发布</span>
+                                    <span class="btn0"><i class="el-icon-video-camera"></i></span>
+                                     <span class='btn' @click="getMethod()" :class="title?'':'active'">{{title?'未参加':'已参加'}}</span>
                                 </p>
                             </div>
                         </div>
@@ -43,24 +31,40 @@
                                 <img src="../../assets/source.png" alt="">
                             </span>
                             <div class="text-box">
-                                <h5>如何在校园里成为迷人的成为迷人的成为迷人的成为迷人的...</h5>
-                                <p class="t1"><i class="el-icon-user-solid"></i>宣传小组</p>
+                                <h5>投票选出您心目中的...</h5>
+                                <p class="t1"><i class="el-icon-user-solid"></i>校园杂志社</p>
+                                <p class="t1">2019-08-19 12:30</p>
                                 <p class="t2">
-                                    <span><i class="el-icon-video-camera"></i>650</span>
-                                    <span>12分钟前发布</span>
+                                    <span class="btn0"><i class="el-icon-video-camera"></i></span>
+                                    <span class='btn' @click="getMethod()" :class="title?'':'active'">{{title?'未参加':'已参加'}}</span>
                                 </p>
                             </div>
                         </div>
-                         <div class="list-item-box">
+                        <div class="list-item-box">
                             <span class="img-box">
                                 <img src="../../assets/source.png" alt="">
                             </span>
                             <div class="text-box">
-                                <h5>如何在校园里成为迷人的成为迷人的成为迷人的成为迷人的...</h5>
-                                <p class="t1"><i class="el-icon-user-solid"></i>宣传小组</p>
+                                <h5>投票选出您心目中的...</h5>
+                                <p class="t1"><i class="el-icon-user-solid"></i>校园杂志社</p>
+                                <p class="t1">2019-08-19 12:30</p>
                                 <p class="t2">
-                                    <span><i class="el-icon-video-camera"></i>650</span>
-                                    <span>12分钟前发布</span>
+                                    <span class="btn0"><i class="el-icon-video-camera"></i></span>
+                                    <span class='btn' @click="getMethod()" :class="title?'':'active'">{{title?'未参加':'已参加'}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="list-item-box">
+                            <span class="img-box">
+                                <img src="../../assets/source.png" alt="">
+                            </span>
+                            <div class="text-box">
+                                <h5>投票选出您心目中的...</h5>
+                                <p class="t1"><i class="el-icon-user-solid"></i>校园杂志社</p>
+                                <p class="t1">2019-08-19 12:30</p>
+                                <p class="t2">
+                                    <span class="btn0"><i class="el-icon-video-camera"></i></span>
+                                    <span class='btn' @click="getMethod()" :class="title?'':'active'">{{title?'未参加':'已参加'}}</span>
                                 </p>
                             </div>
                         </div>
@@ -79,18 +83,20 @@
 export default {
     data(){
         return{
-            
+            title:true,
         }
     },
     methods:{
-        handleClick(tab,event){
-            console.log(tab,event)
+        getMethod(){
+            this.title=!this.title;
         }
+
     }
 }
 </script>
 <style lang="scss" scoped>
 .card-item{
+    
     .card-item-h{
         text-align: left;
         span{
@@ -141,9 +147,9 @@ export default {
                         overflow: hidden;
                         text-overflow:ellipsis;
                     }
-                    p{
-                        line-height: 30px;
-                    }
+                    // p{
+                    //    
+                    // }
                     .t1{
                         font-size: 12px;
                         color: #666;
@@ -153,6 +159,28 @@ export default {
                         display:-webkit-flex;
                         justify-content: space-between;
                         color: #666;
+                        line-height:25px;
+                        padding:0 10px 0 0;
+                        .btn0{
+                           color: #fff;
+                            border-radius: 5px;
+                            text-align: center; 
+                            width: 25px;
+                            background: #DFDFDF;
+                        }
+                        .btn{
+                            color: #fff;
+                            background: #2A79C4;
+                            border-radius: 5px;
+                            padding:0 10px;
+                            width:150px;
+                            text-align: center;
+                            cursor: pointer;
+                        }
+                        .active{
+                            background: #dcdcdc;
+                            color: #999;
+                        }
                     }
                 }
             }

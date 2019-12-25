@@ -50,6 +50,16 @@
                   <!-- 资源中心 -->
                   <resource></resource>
               </div>
+              <div class="cardItem">
+                  <!-- 活动中心 -->
+                  <active></active>
+              </div>
+          </el-col>
+          <el-col :span="12">
+              <div class="cardItem">
+                  <!-- 活动中心 -->
+                  <exchange></exchange>
+              </div>
           </el-col>
       </el-row>
   </div>
@@ -63,6 +73,8 @@ import systemIntegration from '../../components/Index/systemIntegration';
 import officeHall from '../../components/Index/officeHall';
 import dataAnalysis from '../../components/Index/dataAnalysis';
 import resource from '../../components/Index/resource';
+import active from '../../components/Index/active';
+import exchange from '../../components/Index/exchange';
 export default {
     data(){
         return{
@@ -78,6 +90,8 @@ export default {
         officeHall,
         dataAnalysis,
         resource,
+        active,
+        exchange
     },
 }
 </script>

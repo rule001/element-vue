@@ -74,6 +74,20 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/test',
+    name: 'Test',
+    component: Layout,
+    redirect: '/test',
+    children: [
+      {
+        path: 'test',
+        name: 'test',
+        component: () => import('@/views/test/index.vue'),
+        meta: { title: '测试页面', icon: 'el-icon-s-flag' }
+      }
+    ]
+  },
+  {
     path: '/page',
     name: 'page',
     component: Layout,
