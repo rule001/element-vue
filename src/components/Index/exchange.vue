@@ -90,7 +90,6 @@ export default {
         text-align: left;
         overflow: hidden;
         div{
-           
             width: 50%;
             float: left;
             img{
@@ -99,7 +98,6 @@ export default {
                 vertical-align:middle;
             }
             p{
-                width: 50%;
                 display: inline-block;
                 margin: 0 20px 0 0;
                 background: #FBFAC8;

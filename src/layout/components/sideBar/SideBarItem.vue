@@ -50,9 +50,10 @@ export default {
       childItem: null
     }
   },
-  // created(){
-  //   console.log(this.item);
-  // },
+  created(){
+    console.log(this.item);
+    console.log(this.basePath)
+  },
   methods: {
     hasOnlyChild(children = [], item) {
       // debugger

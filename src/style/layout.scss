@@ -43,6 +43,7 @@
         height: 100%;
         .el-scrollbar__wrap {
           overflow-x: hidden !important;
+          text-align: left                 ;
         }
       }
       .el-menu {
@@ -80,7 +81,7 @@
   .logoLink {
     color: $white !important;
     font-size: 15px;
-    margin-left: 18px;
+    margin-left: -28px;
     display: inline-block;
     font-weight: bold;
     height: 100%;

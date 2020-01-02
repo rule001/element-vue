@@ -7,6 +7,10 @@
         <div v-else>
         Now you don't
         </div>
+        <div>
+            <span v-text="message"></span>
+            <span>姓名：{{message}}</span>
+        </div>
     </div>
 </template>
 <script>
@@ -14,7 +18,8 @@ export default {
     data(){
         return{
             isActive:true,
-            hasError:false
+            hasError:false,
+            message:'哈哈'
         }
     },
     beforeCreate(){
