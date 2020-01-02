@@ -64,7 +64,7 @@
                                 <p class="t1">2019-08-19 12:30</p>
                                 <p class="t2">
                                     <span class="btn0"><i class="el-icon-video-camera"></i></span>
-                                    <span class='btn' @click="getMethod()" :class="title?'':'active'">{{title?'未参加':'已参加'}}</span>
+                                    <span class='btn' @click="getMethod" :class="title?'':'active'">{{title?'未参加':'已参加'}}</span>
                                 </p>
                             </div>
                         </div>
