@@ -6,11 +6,15 @@
         <el-card>
             <life></life>
         </el-card>
+         <el-card>
+            <demo></demo>
+        </el-card>
     </div>
 </template>
 <script>
 import test from '../../components/Test/test';
 import life from '../../components/Test/life';
+import demo from '../../components/Test/demo';
 export default {
     data(){
         return{
@@ -19,7 +23,8 @@ export default {
     },
     components:{
         test,
-        life
+        life,
+        demo
     }
 }
 </script>

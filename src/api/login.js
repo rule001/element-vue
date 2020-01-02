@@ -5,6 +5,5 @@ export function login(data){
 }
 export function getInfo() {
     const url = '/getInfo'
-    console.log('7777')
     return $axios.get(url)
 }

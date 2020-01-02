@@ -2,14 +2,9 @@
     <div class="login">
         <div class="loginBox">
             <h2 class="loginH2">
-                <strong>智慧工地信息服务平台</strong>
+                <img src="../../assets/logo.png" alt="">
             </h2>
             <div class="loginCon">
-                <div class="titleDiv">
-                    <!-- <h3>立即登录</h3> -->
-                    <p>请输入你的账号和密码</p>
-                    <!-- <i class="el-icon-user"></i> -->
-                </div>
                 <el-form ref="form" :model="form" :rules="rules">
                     <el-form-item>
                         <el-input 
@@ -84,14 +79,19 @@ export default {
     position: relative;
     top: 50%;
     margin-top: -287px;
+    .loginH2{
+        img{
+            height: 100px;
+        }
+    }
 }
 .loginCon{
     margin-top: 30px;
     background: #fff;
     border-radius: 4px;
-    padding:20px 100px;
+    padding:50px 100px;
     .titleDiv{
-        padding: 0 28px;
+        padding: 28px;
         background: #fff;
         position: relative;
         border-radius: 4px;
@@ -106,6 +106,6 @@ export default {
     width: 100%;
     background: #19b9e7;
     color: #fff;
-    margin: 50px 0 0 0; 
+    margin: 20px 0 0 0; 
 }
 </style>
