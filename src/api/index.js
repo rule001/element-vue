@@ -4,7 +4,6 @@ import store from '@/store'
 import router from '@/router'
 import Vue from 'vue'
 import { Loading, Message } from 'element-ui' // 引用element-ui的加载和消息提示组件
-
 const $axios = axios.create({
   // 设置超时时间
   timeout: 30000,
@@ -82,9 +81,19 @@ export default {
     return $axios({
       method: 'post',
       url,
+      data: Qs.parse(data),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      }
+    })
+  },
+  postForm(url, data) {
+    return $axios({
+      method: 'post',
+      url,
       data: Qs.stringify(data),
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        "Content-Type": "application/json; charset=utf-8",
       }
     })
   },

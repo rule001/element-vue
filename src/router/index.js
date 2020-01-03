@@ -26,13 +26,14 @@ export const currencyRoutes = [
     name: 'Login',
     redirect: '/login',
     component: () => import('@/views/login/index.vue'),
-    meta: { title: '登录页' },
+   
     hidden: true,
     children: [
       {
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
+        meta: { title: '登录页' },
       }
     ]
   },
@@ -147,10 +148,7 @@ router.beforeEach(async (to, from, next) => {
       } else {
         try {
           const { roles } = await store.dispatch('user/_getInfo')
-          const addRoutes = await store.dispatch(
-            'permission/getAsyncRoutes',
-            roles
-          )
+          const addRoutes = await store.dispatch('permission/getAsyncRoutes',roles)
           console.log(store.getters.addRoutes)
           router.addRoutes(addRoutes)
 

@@ -36,15 +36,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       login(formdatas)
         .then(res => {
-          if (res.code === 0) {
-            if (res.data.success) {
-              Message.success(res.data.msg)
+          if (res.state === 1) {
+              Message.success('登录成功')
               commit('SET_TOKEN', res.data.token)
-            } else {
-              Message.error(res.data.msg)
-            }
-            resolve(res)
+          }else{
+            Message.error(res.message)
           }
+          resolve(res)
         })
         .catch(error => {
           reject(error)

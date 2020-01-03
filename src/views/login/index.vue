@@ -10,7 +10,7 @@
                         <el-input 
                             placeholder="请输入账号"
                             prefix-icon="el-icon-user"
-                            v-model="form.user"
+                            v-model="form.userName"
                         >
                         </el-input>
                     </el-form-item>
@@ -33,11 +33,12 @@ export default {
     data(){
         return{
             form:{
-                user:'admin',
-                password:'123456'
+                userName:'18100000000',
+                password:'666666',
+                // type:'account'
             },
             rules: {
-                user: [
+                userName: [
                     { required: true, message: '请输入账号', trigger: 'blur' },
                     { min: 3, max: 5, message: '长度为11个字符', trigger: 'blur' }
                 ],
@@ -52,11 +53,12 @@ export default {
             this.$store
             .dispatch('user/_login',this.form)
             .then(res=>{
-                if(!res.data.success){
-                    // this.refresh()
-                }else{
-                    console.log(this.$router)
+                console.log(res)
+                if(res.state==1){
+                   console.log(this.$router)
                     this.$router.push('/index')
+                }else{
+                    
                 }
             })
             // console.log(this.form);
