@@ -57,8 +57,6 @@ export default {
                 if(res.state==1){
                    console.log(this.$router)
                     this.$router.push('/index')
-                }else{
-                    
                 }
             })
             // console.log(this.form);

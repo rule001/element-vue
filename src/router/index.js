@@ -26,7 +26,7 @@ export const currencyRoutes = [
     name: 'Login',
     redirect: '/login',
     component: () => import('@/views/login/index.vue'),
-   
+    meta: { title: '登录页' },
     hidden: true,
     children: [
       {
