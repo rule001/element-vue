@@ -75,16 +75,16 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/test',
-    name: 'Test',
+    path: '/project',
+    name: 'Project',
     component: Layout,
-    redirect: '/test',
+    redirect: '/project',
     children: [
       {
-        path: 'test',
-        name: 'test',
-        component: () => import('@/views/test/index.vue'),
-        meta: { title: '测试页面', icon: 'el-icon-s-flag' }
+        path: 'project',
+        name: 'project',
+        component: () => import('@/views/project/index.vue'),
+        meta: { title: '项目管理', icon: 'el-icon-s-flag' }
       }
     ]
   },
