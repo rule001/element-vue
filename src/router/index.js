@@ -26,13 +26,14 @@ export const currencyRoutes = [
     name: 'Login',
     redirect: '/login',
     component: () => import('@/views/login/index.vue'),
-    meta: { title: '登录页' },
+    
     hidden: true,
     children: [
       {
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
+        meta: { title: '登录页' },
       }
     ]
   },
@@ -55,21 +56,21 @@ export const asyncRoutes = [
         path: 'index',
         name: 'index',
         component: () => import('@/views/index/index.vue'),
-        meta: { title: '首页', icon: 'el-icon-s-flag' }
+        meta: { title: 'saas首页', icon: 'el-icon-s-flag' }
       }
     ]
   },
   {
-    path: '/demo',
-    name: 'Demo',
+    path: '/campus',
+    name: 'Campus',
     component: Layout,
-    redirect: '/demo',
+    redirect: '/campus/campus',
     children: [
       {
-        path: 'demo',
-        name: 'demo',
-        component: () => import('@/views/demo/index.vue'),
-        meta: { title: 'demo', icon: 'el-icon-s-flag' }
+        path: 'index',
+        name: 'index',
+        component: () => import('@/views/campus/index.vue'),
+        meta: { title: '智慧校园', icon: 'el-icon-s-flag' }
       }
     ]
   },
@@ -88,11 +89,25 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/demo',
+    name: 'Demo',
+    component: Layout,
+    redirect: '/demo',
+    children: [
+      {
+        path: 'demo',
+        name: 'demo',
+        component: () => import('@/views/demo/index.vue'),
+        meta: { title: '卡片移动', icon: 'el-icon-s-flag' }
+      }
+    ]
+  },
+  {
     path: '/page',
     name: 'page',
     component: Layout,
     meta: {
-      title: '页面',
+      title: '下拉页面',
       icon: 'el-icon-lock'
     },
     children: [

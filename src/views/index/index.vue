@@ -1,105 +1,40 @@
 <template>
-  <div class="index-box">
-      <el-row>
-          <el-col :span="12">
-            <!-- <div class="cardItem"> -->
-                <lunbo></lunbo>
-            <!-- </div>  -->
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <date></date>
-              </div>
-          </el-col>
-           <!-- <el-col :span="12">
-              <div class="cardItem">
-                  <date></date>
-              </div>
-          </el-col> -->
-          <el-col :span="12">
-              <div class="cardItem">
-                  <inform></inform>
-              </div>
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <!-- 常见应用 -->
-                  <commonApplication></commonApplication>
-              </div>
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <!-- 系统集成 -->
-                  <systemIntegration></systemIntegration>
-              </div>
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <!-- 办事大厅 -->
-                  <officeHall></officeHall>
-              </div>
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <!-- 数据分析 -->
-                  <dataAnalysis></dataAnalysis>
-              </div>
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <!-- 资源中心 -->
-                  <resource></resource>
-              </div>
-              <div class="cardItem">
-                  <!-- 活动中心 -->
-                  <active></active>
-              </div>
-          </el-col>
-          <el-col :span="12">
-              <div class="cardItem">
-                  <!-- 活动中心 -->
-                  <exchange></exchange>
-              </div>
-          </el-col>
-      </el-row>
-  </div>
+    <div>
+        <el-tabs type="border-card">
+            <el-tab-pane>
+                <span slot="label"><i class="el-icon-date"></i>民工管理</span>
+                <management></management>
+            </el-tab-pane>
+            <el-tab-pane label="民工考勤">民工考勤</el-tab-pane>
+            <el-tab-pane label="工资发放">工资发放</el-tab-pane>
+            <el-tab-pane label="其它">其它</el-tab-pane>
+        </el-tabs>
+        <!-- <el-tabs v-model="activeName" @tab-click="handleClick" style="background:#fff;padding:0 20px">
+            <el-tab-pane label="用户管理" name="first"><management></management></el-tab-pane>
+            <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+            <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+            <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+        </el-tabs> -->
+    </div>
 </template>
 <script>
-import lunbo from '../../components/Index/lunbo';
-import date from '../../components/Index/date'
-import inform from '../../components/Index/inform';
-import commonApplication from '../../components/Index/commonApplication';
-import systemIntegration from '../../components/Index/systemIntegration';
-import officeHall from '../../components/Index/officeHall';
-import dataAnalysis from '../../components/Index/dataAnalysis';
-import resource from '../../components/Index/resource';
-import active from '../../components/Index/active';
-import exchange from '../../components/Index/exchange';
+import management from '../../components/Worker/management'
 export default {
     data(){
         return{
-          
+            activeName: 'first'
         }
     },
-    components: {
-        lunbo,
-        date,
-        inform,
-        commonApplication,
-        systemIntegration,
-        officeHall,
-        dataAnalysis,
-        resource,
-        active,
-        exchange
+    components:{
+        management
     },
+    methods: {
+      handleClick(tab, event) {
+        console.log(tab, event);
+      }
+    }
 }
 </script>
-<style lang="scss" scoped>
-  .cardItem{
-    margin:10px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow:0 2px 12px 0 rgba(0,0,0,.1)
-  }
+<style scoped lang="scss">
+
 </style>
